@@ -1,5 +1,5 @@
 <template>
-  <div id="submitForm">
+  <div>
     <transition name="modal">
       <div class="modal-mask">
         <div class="modal-wrapper">
@@ -42,6 +42,7 @@
                 </div>
                 <br />
                 <button>Add</button>
+                <button @click="cancel" style=" margin-left: 10px">Cancel</button>
               </form>
             </div>
           </div>
@@ -54,7 +55,7 @@
 <script>
 export default {
   name: "Form",
-  data: function() {
+  data() {
     return {
       name: this.pname,
       email: this.pemail,
@@ -89,6 +90,10 @@ export default {
         this.$emit("submitItem", payload);
       }
       this.$emit("close");
+    },
+
+    cancel() {
+      return this.$emit("close");
     }
   }
 };
